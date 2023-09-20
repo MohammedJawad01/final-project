@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>coffeebreak</title>
+    <style>
+        /* Apply CSS styles to the table */
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <h1>coffeebreak</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Menu Items</th>
+                <th>Serving Size</th>
+                <th>Pricing per Person (IQD)</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for coffeebreak in coffeebreaks %}
+                <tr>
+                    <td>{{ coffeebreak.name }}</td>
+                    <td>{{ coffeebreak.menu_items }} </td>
+                    <td>{{ coffeebreak.serving_sizes }}</td>
+                    <td>{{ coffeebreak.pricing_per_person }} IQD </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

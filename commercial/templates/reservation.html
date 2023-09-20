@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form method="post" action="{% url 'reservation' %}">
+        {% csrf_token %}
+        <label for="event_space">Event Space:</label>
+    <select name="event_space">
+        {% for room in rooms %}
+            <option value="{{ room.id }}">{{ room.name }}</option>
+        {% endfor %}
+    </select>
+    <br>
+    <label for="coffee_break">Coffee Break:</label>
+    <select name="coffee_break">
+    <option value="">None</option> <!-- This is the default empty option -->
+    {% for break in coffee_breaks %}
+        <option value="{{ break.id }}">{{ break.name }}</option>
+    {% endfor %}
+    </select>
+<br>
+
+        <label for="date_and_time">Date and Time:</label>
+        <input type="datetime-local" name="date_and_time" id="date_and_time"><br>
+    
+        <label for="number_of_attendees">Number of Attendees:</label>
+        <input type="number" name="number_of_attendees" id="number_of_attendees"><br>
+    
+        <label for="notes">Notes:</label>
+        <textarea name="notes" id="notes" rows="4"></textarea><br>
+    
+        <input type="submit" value="Submit">
+    </form>
+    
+</body>
+</html>
